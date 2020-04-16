@@ -5,6 +5,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 //components
 import GridGallery from './components/GridGallery';
+import ShoppingCart from './components/ShoppingCart';
 
 //Apollo client setup
 const client = new ApolloClient({
@@ -14,12 +15,15 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <h1> Lumin Skin Care</h1>
-        <GridGallery />
+      <div class="container">
+        <GridGallery /> 
       </div>
+
+
     </ApolloProvider>
   );
 }
 
 export default App;
+
+ /* <ShoppingCart /> */

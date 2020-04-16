@@ -2,6 +2,9 @@ import React from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 
+//components
+import ProductCard from './ProductCard';
+
 const getProductQuery = gql`
   {
     products{
@@ -21,15 +24,9 @@ function GridGallery() {
   	var dataProducts = data.products;
   	return dataProducts.map( product => {
   		return (
-  			<li 
-  			key={product.id} > 
-	  			<p> {product.title} </p>
-	  			<p> From: {product.price} </p>
-	  			<div>
-			        <img src={product.image_url} alt={product.title}  width="42" height="42"/>
-			    </div>
-
-  			</li>
+  			<div> 
+	  			<ProductCard product={product} > </ProductCard>
+  			</div>
   		);
   	});
   }
@@ -38,11 +35,12 @@ function GridGallery() {
   if (error) return <p>Error :(</p>;
 
   return(
-    <div className="GridGallery">
-      <ul id="product-list" >
-      	{ displayProducts() }
-      </ul>
-    </div>
+
+    <section>
+	    <div className="GridGalleryRow">
+	      	{ displayProducts() }   
+	    </div>
+    </section>
   );
 
 }

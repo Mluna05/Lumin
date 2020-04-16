@@ -1,3 +1,55 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-style: sans-serif;
+}
+
 body{
   background-color: #E2E6E3;
 }
+
+.container{
+  max-width: 80%;
+  margin: auto;
+}
+
+/* Float four columns side by side */
+.GridGalleryCol {
+  float: left;
+  width: 30%;
+  padding:10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.GridGalleryRow {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.GridGalleryRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 768px) {
+  .GridGalleryCol {
+    width: 45%;
+    display: block;
+    margin-bottom: 50px;
+  }
+}
+
+/* Style the counter cards */
+.prodCard {
+  padding: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.prodCard .prodCardImg img{
+  width: 40%;
+  height: auto;
+}
+
