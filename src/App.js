@@ -13,12 +13,30 @@ const client = new ApolloClient({
 }); 
 
 function App() {
+
+	  // When the user clicks on <span> (x), close the modal
+  const openModal  = () => {
+    document.getElementById("modal").style.display = "block";
+    document.getElementsByClassName("ShoppingCart")[0].style.display = "block";
+  }
+
   return (
     <ApolloProvider client={client}>
-      <div class="container">
-        <GridGallery /> 
-      </div>
 
+    	<div className="headerSite"> 
+    		<img src="https://cdn.shopify.com/s/files/1/0044/1237/5107/files/black.font.sipmle_360x.png?v=1555959070" /> 
+    		<div className="optMenu">Shop</div>
+    		<div className="optMenu">Learn</div>
+    		<div className="optAccount">Account</div>
+			<div className="iconCart" onClick={openModal}>Cart</div>
+    	</div>
+
+	    <div className="contentProduct">
+	        <GridGallery /> 
+
+	        <div className="modal" id="modal"></div>
+	        <ShoppingCart/>
+	    </div>
 
     </ApolloProvider>
   );
@@ -26,4 +44,4 @@ function App() {
 
 export default App;
 
- /* <ShoppingCart /> */
+ /*  */

@@ -2,11 +2,54 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-style: sans-serif;
+  font-family: Roboto;
 }
 
 body{
   background-color: #E2E6E3;
+}
+
+.headerSite , .headerGG {
+  position: relative;
+  background-color: white;
+}
+
+.headerSite {
+  padding: 2% 5%;
+  box-shadow: 0px 1px 8px grey;
+  z-index: 1;
+}
+
+.headerGG {
+  padding: 7% 5%;
+}
+
+.headerSite img {
+  width: 15em;
+}
+
+.headerSite div{
+  display: inline-block;
+  position: absolute;
+}
+
+.headerSite .optMenu{
+  position: relative;
+  margin: 0em 3em;
+}
+
+.headerSite .optAccount{
+    right: 8em;
+    top: 3em;
+}
+
+.headerSite .iconCart{
+    right: 4em;
+    top: 3em;
+}
+
+.headerSite .iconCart{
+  cursor: pointer;
 }
 
 .container{
@@ -22,13 +65,241 @@ body{
 }
 
 /* Remove extra left and right margins, due to padding */
-.GridGalleryRow {margin: 0 -5px;}
+.GridGalleryRow {
+  margin: 0 -5px;
+}
 
 /* Clear floats after the columns */
 .GridGalleryRow:after {
   content: "";
   display: table;
   clear: both;
+}
+
+/* Style the counter cards */
+.prodCard {
+  text-align: center;
+}
+
+.prodCard div{
+  font-size: 1em;
+  margin-bottom: .5em;
+}
+
+.prodCard p{
+  color: #353835;
+  margin-bottom: .7em;
+}
+
+.prodCard .prodCardImg img{
+  max-width: 200px;
+  height: 130px;
+  object-fit: contain;
+  margin: 3em 0;
+}
+
+.button {
+  background-color: #4B5548; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 14px 2px;
+  cursor: pointer;
+  outline:none;
+}
+
+/* Shopping Cart */
+
+.ShoppingCart{
+  /*  display: none; /Hidden by default */
+  background-color: #F2F3F0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.listItem{
+  height: 70vh;
+  overflow: auto;
+  margin-top: 1em;
+}
+
+.ddlCurrency{
+  position: relative;
+}
+
+/* The Close Button */
+.close{
+  color: #aaaaaa;
+  font-size: 28px;
+  position: relative;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+}
+
+/* The Close Button Shopping Cart*/
+.clItemShopCart {
+  color: #aaaaaa;
+  font-size: 28px;
+  position: relative;
+}
+
+.close:hover,
+.close:focus,
+.clItemShopCart:hover,
+.clItemShopCart:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.titleCart {
+  text-align: center;
+  letter-spacing: .5em;
+  color: gray;
+}
+
+select.ddlCurrency {
+  position: relative;
+  top: 1em;
+  left: 1em;
+}
+
+.itemShopCart {
+  position: relative;
+  top: 1em;
+  width: 92%;
+  background-color: white;
+  margin: 0.5em auto;
+  padding: 1.2em;
+}
+
+.itemShopCart p{
+  text-align: left;
+  padding-top: .8em;
+}
+
+.ItemShopCartPrice {
+  text-align: center;
+  position: relative;
+  top: 1.2em;
+  width: fit-content;
+  margin: auto;
+  margin-top: 2em;
+}
+
+.clItemShopCart {
+  position: absolute;
+  top: 0.2em;
+  right: 0.5em;
+}
+
+.ItemShopCartImg img{
+  width: 10%;
+  position: absolute;
+  top: 3em;
+  right: 3em;
+}
+
+.unitCntrl {
+  display: flex;
+}
+
+button.btnPlus, button.btnLess {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 6px 13px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.qtyItem {
+  padding-top: 0.35em;
+  width: 1.5em;
+  text-align: center;
+}
+
+.unitCntrl {
+  display: flex;
+  width: fit-content;
+  border: 1px solid #d2d2d2;
+}
+
+hr.lnTotal {
+  width: 95%;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.totalSec {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 1em;
+  background-color: #F2F3F0;
+}
+
+.lblTotal {
+  width: 45%;
+  display: inline-block;
+  margin-left: 2em;
+}
+
+.valueTotal {
+  width: 45%;
+  display: inline-block;
+  text-align-last: end;
+}
+
+.btnSubs {
+  background-color: white;
+  color: gray;
+  border: 1px solid black;
+}
+
+.btnCheckOut {
+  background-color: #4B5548;
+  color: gray;
+}
+
+button.btnSubs,
+button.btnCheckOut {
+    padding: .8em 1.8em;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 95%;
+    margin: 1em auto;
+    letter-spacing: 2px;
+}
+
+.modal {
+  /*  display: none; /Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Responsive columns */
@@ -38,18 +309,9 @@ body{
     display: block;
     margin-bottom: 50px;
   }
-}
+  
+  .ShoppingCart{
+    width: 85%;
+  }
 
-/* Style the counter cards */
-.prodCard {
-  padding: 16px;
-  margin-bottom: 20px;
-  text-align: center;
-  background-color: #f1f1f1;
 }
-
-.prodCard .prodCardImg img{
-  width: 40%;
-  height: auto;
-}
-

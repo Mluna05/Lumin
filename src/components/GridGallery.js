@@ -24,7 +24,7 @@ function GridGallery() {
   	var dataProducts = data.products;
   	return dataProducts.map( product => {
   		return (
-  			<div> 
+  			<div key={'product_' + product.id}> 
 	  			<ProductCard product={product} > </ProductCard>
   			</div>
   		);
@@ -36,10 +36,17 @@ function GridGallery() {
 
   return(
 
-    <section>
-	    <div className="GridGalleryRow">
-	      	{ displayProducts() }   
-	    </div>
+    <section >
+        <div className="headerGG">
+            <h2>ALL Products</h2>
+            <p>A 360º look at Lumin</p>
+        </div>
+
+        <div className="container">
+      	    <div className="GridGalleryRow">
+      	      	{ displayProducts() }   
+      	    </div>
+        </div>
     </section>
   );
 
