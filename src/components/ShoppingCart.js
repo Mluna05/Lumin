@@ -11,7 +11,7 @@ const getCurrencyQuery = gql`
 }
 `;
 
-function ShoppingCart() {
+const ShoppingCart = ( {orders} ) => {
 
   const { loading, error, data } = useQuery(getCurrencyQuery);
 
@@ -29,7 +29,16 @@ function ShoppingCart() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  // When the user clicks on <span> (x), close the modal
+  const displayOrders = () =>{
+
+    var dataOrders = orders.products;
+    return dataOrders.map( product => {
+      return (
+        <ItemShopCart product={ product } key={ 'itmSC_' +product.id }/>
+      );
+    });
+  }
+
   const closeModal  = () => {
     document.getElementById("modal").style.display = "none";
     document.getElementsByClassName("ShoppingCart")[0].style.display = "none";
@@ -49,7 +58,7 @@ function ShoppingCart() {
     	    </div>
 
           <div className="listItem">
-              <ItemShopCart />
+              { displayOrders() } 
           </div>
 
           <div className="totalSec">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 
@@ -16,7 +16,8 @@ const getProductQuery = gql`
   }
 `;
 
-function GridGallery() {
+const GridGallery = ({ addToShoppingCart }) => {
+
 
   const { loading, error, data } = useQuery(getProductQuery);
 
@@ -25,7 +26,7 @@ function GridGallery() {
   	return dataProducts.map( product => {
   		return (
   			<div key={'product_' + product.id}> 
-	  			<ProductCard product={product} > </ProductCard>
+	  			<ProductCard product={ product } addToShoppingCart = { addToShoppingCart } />
   			</div>
   		);
   	});
@@ -36,7 +37,7 @@ function GridGallery() {
 
   return(
 
-    <section >
+    <Fragment>
         <div className="headerGG">
             <h2>ALL Products</h2>
             <p>A 360º look at Lumin</p>
@@ -47,7 +48,7 @@ function GridGallery() {
       	      	{ displayProducts() }   
       	    </div>
         </div>
-    </section>
+    </Fragment>
   );
 
 }

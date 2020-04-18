@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ItemShopCart() {
+const ItemShopCart = ( { product : { id, title, image_url, price, qty} } ) => {
 
    const addItem  = () => {
     let value = Number(document.getElementsByClassName("qtyItem")[0].innerText) + 1;
@@ -16,20 +16,20 @@ function ItemShopCart() {
     <div className="itemShopCart">
 
           <div className="clItemShopCart" >&times;</div>
-          <p> Premium-Grade Moisturizing Balm </p>
+          <p> { title } </p>
       
           <div className="ItemShopCartImg">
                <img 
-              src="https://d1b929y2mmls08.cloudfront.net/luminskin/img/new-landing-page/moisturizing-balm.png" 
-              alt="SIE" />
+              src={ image_url }
+              alt={ title } />
           </div>
 
-          <div className="ItemShopCartPrice"> $29.00 </div>
+          <div className="ItemShopCartPrice"> ${ price }.00 </div>
 
           <div className="unitCntrl">
-              <button className="btnLess" onClick={delItem}>-</button>
-              <div className="qtyItem"> 1 </div>
-              <button className="btnPlus" onClick={addItem}>+</button>
+              <button className="btnLess" onClick={ delItem }>-</button>
+              <div className="qtyItem"> { qty } </div>
+              <button className="btnPlus" onClick={ addItem }>+</button>
           </div>
 
     </div>

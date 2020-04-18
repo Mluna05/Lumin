@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ProductCard(props) {
+const ProductCard = ( {  product: { id, title, image_url, price } , addToShoppingCart } ) => {
 
-  const onClickHandler = () =>{
-    console.log(props.product.id);
+  const handlerAddShoppingCart = () => {
+    addToShoppingCart( { id, title, image_url, price, qty: 0 } );
   }
 
   return(
@@ -11,12 +11,12 @@ function ProductCard(props) {
       <div className="prodCard"> 
           <div className="prodCardImg">
               <img 
-                src={props.product.image_url} 
-                alt={props.product.title} />
+                src={image_url} 
+                alt={title} />
           </div>
-          <p> {props.product.title} </p>
-          <div> From: ${props.product.price}.00 </div>
-          <button className="button" onClick={onClickHandler}>Add to Cart</button>
+          <p> {title} </p>
+          <div> From: ${price}.00 </div>
+          <button className="button" onClick={handlerAddShoppingCart} >Add to Cart</button>
       </div>
     </div>
   );
