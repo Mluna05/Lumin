@@ -11,8 +11,13 @@ const getCurrencyQuery = gql`
 }
 `;
 
-const ShoppingCart = ( {orders} ) => {
+const ShoppingCart = ( props ) => {
 
+  let orders = props.orders;
+  let openModal = props.openModal;
+  const setCurrency = props.setCurrency;
+  const addToShoppingCart = props.addToShoppingCart;
+  const delToShoppingCart = props.delToShoppingCart;
   const { loading, error, data } = useQuery(getCurrencyQuery);
 
   const displayCurrency  = () =>  {
@@ -29,19 +34,30 @@ const ShoppingCart = ( {orders} ) => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  const displayOrders = () =>{
+  const  generateItems = () =>{
 
     var dataOrders = orders.products;
     return dataOrders.map( product => {
       return (
-        <ItemShopCart product={ product } key={ 'itmSC_' +product.id }/>
+        <ItemShopCart 
+            product={ product } 
+            addToShoppingCart={ addToShoppingCart }
+            delToShoppingCart={ delToShoppingCart }  
+            key={ 'itmSC_' + product.id }/>
       );
     });
   }
 
+  const displayOrders = () =>{
+     return orders.products.lenght === 0 ? ''  : generateItems();
+  }
+
   const closeModal  = () => {
-    document.getElementById("modal").style.display = "none";
-    document.getElementsByClassName("ShoppingCart")[0].style.display = "none";
+    openModal();
+  }
+
+  const sendCurrency = (e) =>{
+     setCurrency(e.target.value);
   }
 
   return(
@@ -52,7 +68,7 @@ const ShoppingCart = ( {orders} ) => {
           <div className="titleCart">YOUR CART</div>
 
     	    <div className="cartCurrency">
-            <select className="ddlCurrency">
+            <select className="ddlCurrency" onChange={ sendCurrency } >
               { displayCurrency() }
             </select>
     	    </div>
@@ -66,7 +82,7 @@ const ShoppingCart = ( {orders} ) => {
               <hr className="lnTotal"/>
 
               <div className="lblTotal">Subtotal</div>
-              <div className="valueTotal">$100.00</div>
+              <div className="valueTotal">$ {orders.subTotal}.00</div>
 
               <button className="btnSubs" >MAKE THIS A SUBSCRIPTION (SAVE 20%)</button>
               <button className="btnCheckOut" >PROCEED TO CHECKOUT</button>

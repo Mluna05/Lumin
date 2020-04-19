@@ -16,7 +16,7 @@ const ProductCard = ( {  product: { id, title, image_url, price } , addToShoppin
           </div>
           <p> {title} </p>
           <div> From: ${price}.00 </div>
-          <button className="button" onClick={handlerAddShoppingCart} >Add to Cart</button>
+          <button className="button" onClick={ handlerAddShoppingCart } >Add to Cart</button>
       </div>
     </div>
   );

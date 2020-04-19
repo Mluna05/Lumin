@@ -5,24 +5,28 @@ import { useQuery } from '@apollo/react-hooks';
 //components
 import ProductCard from './ProductCard';
 
-const getProductQuery = gql`
+const GridGallery = ({ addToShoppingCart , currencyState, productsState }) => {
+
+  let getProductQuery = gql`
   {
     products{
       id
       title
       image_url
-      price(currency:USD)
+      price(currency:${ currencyState })
     }
   }
 `;
-
-const GridGallery = ({ addToShoppingCart }) => {
-
+  
 
   const { loading, error, data } = useQuery(getProductQuery);
 
-  const displayProducts  = () =>  {
-  	var dataProducts = data.products;
+  const displayProducts = () =>  {  
+
+    const updtOrders = ( dataProducts ) =>{
+    }
+
+    const dataProducts = [ ...data.products ];
   	return dataProducts.map( product => {
   		return (
   			<div key={'product_' + product.id}> 

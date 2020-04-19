@@ -1,21 +1,26 @@
 import React from 'react';
 
-const ItemShopCart = ( { product : { id, title, image_url, price, qty} } ) => {
+const ItemShopCart = (  { product , addToShoppingCart, delToShoppingCart }  ) => {
 
-   const addItem  = () => {
-    let value = Number(document.getElementsByClassName("qtyItem")[0].innerText) + 1;
-    document.getElementsByClassName("qtyItem")[0].innerText = value;
+  let { id, title, image_url, price, qty} = { ...product };
+
+  const addItem  = () => {
+    addToShoppingCart(product);
   }
 
   const delItem  = () => {
-    let value = Number(document.getElementsByClassName("qtyItem")[0].innerText) - 1;
-    document.getElementsByClassName("qtyItem")[0].innerText = value;
+    delToShoppingCart(product);
+  }
+
+  const removeItem  = () => {
+    product.qty = 1;
+    delToShoppingCart( product );
   }
 
   return(
     <div className="itemShopCart">
 
-          <div className="clItemShopCart" >&times;</div>
+          <div className="clItemShopCart" onClick={ removeItem }>&times;</div>
           <p> { title } </p>
       
           <div className="ItemShopCartImg">
