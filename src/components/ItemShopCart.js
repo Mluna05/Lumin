@@ -2,7 +2,7 @@ import React from 'react';
 
 const ItemShopCart = (  { product , addToShoppingCart, delToShoppingCart }  ) => {
 
-  let { id, title, image_url, price, qty} = { ...product };
+  let { title, image_url, price, qty} = { ...product };
 
   const addItem  = () => {
     addToShoppingCart(product);

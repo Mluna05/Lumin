@@ -11,13 +11,14 @@ const getCurrencyQuery = gql`
 }
 `;
 
-const ShoppingCart = ( props ) => {
 
+const ShoppingCart = ( props ) => {
   let orders = props.orders;
   let openModal = props.openModal;
   const setCurrency = props.setCurrency;
   const addToShoppingCart = props.addToShoppingCart;
   const delToShoppingCart = props.delToShoppingCart;
+  const IoIosArrowDropleft = props.IoIosArrowDropleft;
   const { loading, error, data } = useQuery(getCurrencyQuery);
 
   const displayCurrency  = () =>  {
@@ -34,15 +35,17 @@ const ShoppingCart = ( props ) => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
+
   const  generateItems = () =>{
 
     var dataOrders = orders.products;
+
     return dataOrders.map( product => {
       return (
         <ItemShopCart 
             product={ product } 
             addToShoppingCart={ addToShoppingCart }
-            delToShoppingCart={ delToShoppingCart }  
+            delToShoppingCart={ delToShoppingCart }
             key={ 'itmSC_' + product.id }/>
       );
     });
@@ -63,7 +66,7 @@ const ShoppingCart = ( props ) => {
   return(
         <div className="ShoppingCart">
 
-          <div className="close" onClick={closeModal}>&times;</div>
+          <span className="close" onClick={closeModal}>{ IoIosArrowDropleft }</span>
 
           <div className="titleCart">YOUR CART</div>
 

@@ -126,6 +126,12 @@ body{
   z-index: 2;
 }
 
+.ttNumCart {
+    left: 1.6em;
+    bottom: 1.4em;
+    font-size: 0.9em;
+}
+
 .listItem{
   height: 70vh;
   overflow: auto;
@@ -141,8 +147,8 @@ body{
   color: #aaaaaa;
   font-size: 28px;
   position: relative;
-  margin-left: 0.5em;
-  margin-top: 0.5em;
+  top: .5em;
+  left: .8em;
 }
 
 /* The Close Button Shopping Cart*/

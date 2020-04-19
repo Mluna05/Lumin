@@ -3,6 +3,10 @@ import './App.css';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
+//react - icons
+import { FiShoppingCart } from "react-icons/fi";
+import { IoIosArrowDropleft } from "react-icons/io";
+
 //components
 import GridGallery from './components/GridGallery';
 import ShoppingCart from './components/ShoppingCart';
@@ -26,12 +30,11 @@ const App = () => {
 
   const[orders, setOrders] = useState({ 
   										products:[], 
-										currency:'USD', 
+										currency:'USD',
+										totalItems:0, 
 										subTotal: 0  
 									  });
-  
 
-	  // When the user clicks on (x), close the modal
   const openModal  = () => {
   	setShopCartModal(!shopCartModal);
   }
@@ -51,9 +54,10 @@ const App = () => {
     if( objIndex >= 0 ){
     	item.qty = products[objIndex].qty + 1;
     	products[objIndex] = item;
+
     }
   	
-	setOrders( { products , currency: orders.currency , subTotal: calculateSubTotal(products)  } );
+	setOrders( { products , currency: orders.currency , totalItems: calculatetotalItems(products),  subTotal: calculateSubTotal(products)  } );
   }
 
   const delToShoppingCart  = ( item ) => {
@@ -69,7 +73,11 @@ const App = () => {
     	products.splice(objIndex, 1); 
     }
   	
-	setOrders( { products , currency: orders.currency , subTotal: calculateSubTotal(products)  } );
+	setOrders( { products , currency: orders.currency , totalItems: calculatetotalItems(products), subTotal: calculateSubTotal(products)  } );
+  }
+
+  const calculatetotalItems = ( products ) => {
+  	return products.reduce( ( acc, product) => acc + product.qty , 0 );
   }
 
   const calculateSubTotal = ( products ) => {
@@ -88,7 +96,11 @@ const App = () => {
     		<div className="optMenu">Shop</div>
     		<div className="optMenu">Learn</div>
     		<div className="optAccount">Account</div>
-			<div className="iconCart" onClick={ openModal }>Cart</div>
+			<div className="iconCart" 
+				 onClick={ openModal }>
+					 <FiShoppingCart size="1.5em"/> 
+					 <div className="ttNumCart" > { orders.totalItems } </div> 
+				</div>
     	</div>
 
 	    <div className="contentProduct">
@@ -100,7 +112,8 @@ const App = () => {
 	    																					openModal={ openModal } 
 	    																					addToShoppingCart={ addToShoppingCart }
 	    																					delToShoppingCart={ delToShoppingCart }  
-	    																					setCurrency={ setCurrency }/> 
+	    																					setCurrency={ setCurrency }
+	    																					IoIosArrowDropleft= { <IoIosArrowDropleft/> }/> 
 	    				  </Fragment> : null }
 
 	    </div>
